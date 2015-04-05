@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+
+<!-- ===========================================================================
+
+ Riot Java API
+
+============================================================================ -->
+
+<project default="package" basedir=".">
+    <target name="init">
+        <!-- properties for main build -->
+        <property name="src.dir" value="${basedir}/src"/>
+        <property name="docs.dir" value="${basedir}/docs"/>
+        <property name="build.dir" value="${basedir}/build"/>
+        <property name="build.src" value="${build.dir}/src"/>
+        <property name="build.dest" value="${build.dir}/classes"/>
+        <property name="build.javadocs" value="${build.dir}/javadocs"/>
+
+        <property name="debug" value="on"/>
+        <property name="optimize" value="off"/>
+        <property name="deprecation" value="off"/>
+        <property name="build.compiler" value="modern"/>
+
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Help on usage                                                       -->
+    <!-- =================================================================== -->
+    <target name="usage">
+        <echo message=""/>
+        <echo message=""/>
+        <echo message="Riot Java API build file"/>
+        <echo message="-------------------------------------------------------------"/>
+        <echo message=""/>
+        <echo message=" available targets are:"/>
+        <echo message=""/>
+        <echo message="   package  --> generates the ivytags.jars (default)"/>
+        <echo message="   compile  --> compiles the source code"/>
+        <echo message="   clean    --> cleans up the directory"/>
+        <echo message="   javadoc  --> creates the Javadoc"/>
+        <echo message=""/>
+        <echo message=" See the comments inside the build.xml file for more details."/>
+        <echo message="-------------------------------------------------------------"/>
+        <echo message=""/>
+        <echo message=""/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Prepare the build directory                                         -->
+    <!-- =================================================================== -->
+    <target name="prepare" depends="init">
+        <mkdir dir="${build.dir}"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Clears the build directory                                          -->
+    <!-- =================================================================== -->
+    <target name="clean" depends="init">
+        <!--clean old stuff-->
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Prepares the source code directory                                  -->
+    <!-- =================================================================== -->
+    <target name="prepare-src" depends="prepare">
+        <!--creates the directories-->
+        <mkdir dir="${build.dest}"/>
+        <mkdir dir="${build.src}"/>
+
+        <!--copies the source code-->
+        <copy todir="${build.src}">
+            <fileset dir="${src.dir}" />
+        </copy>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Compiles the source code directory                                  -->
+    <!-- =================================================================== -->
+    <target name="compile" depends="prepare-src">
+        <!--compiles the code-->
+        <javac srcdir="${build.src}"
+               destdir="${build.dest}"
+               debug="${debug}"
+               deprecation="${deprecation}"
+               optimize="${optimize}">
+            <classpath>
+                <fileset dir="lib">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Creates the class package                                           -->
+    <!-- =================================================================== -->
+    <target name="package" depends="compile">
+        <jar jarfile="${build.dir}/riot-api-java.jar" basedir="${build.dest}">
+        </jar>
+    </target>
+
+    <!-- =================================================================== -->
+    <!-- Generates the javadoc                                               -->
+    <!-- =================================================================== -->
+    <target name="javadoc" depends="prepare-src">
+
+        <mkdir dir="${build.javadocs}"/>
+        <javadoc sourcepath="${build.src}"
+            destdir="${build.javadocs}"
+            packagenames="constant,constant.staticdata,dto.Champion,dto.Game,dto.League,dto.Match,dto.MatchHistory,dto.Static,dto.Stats,dto.Status,dto.Summoner,dto.Team,main.java.riotapi,method,util">
+            <classpath>
+                <fileset dir="lib">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javadoc>
+
+    </target>
+</project>
