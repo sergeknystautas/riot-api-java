@@ -23,7 +23,8 @@ public class Participant implements Serializable {
 
 	private static final long serialVersionUID = 7105307616042600638L;
 	private boolean bot;
-	private long championId, profileIconId, spell1Id, spell2Id, summonerId, teamId, teamParticipantId;
+	private int championId;
+	private long profileIconId, spell1Id, spell2Id, summonerId, teamId, teamParticipantId;
 	private List<Mastery> masteries;
 	private List<Rune> runes;
 	private String summonerName;
@@ -36,7 +37,7 @@ public class Participant implements Serializable {
 		return bot;
 	}
 	
-	public long getChampionId() {
+	public int getChampionId() {
 		return championId;
 	}
 	
