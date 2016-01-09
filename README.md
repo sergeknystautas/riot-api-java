@@ -1,6 +1,6 @@
-#[RIOT-API-JAVA](http://rithms.im/riot-api-java/)
+#[RIOT-API-JAVA](http://rithms.net/riot-api-java/)
 ----------
-[![JitPack](https://img.shields.io/github/tag/rithms/riot-api-java.svg?label=maven)](https://jitpack.io/#rithms/riot-api-java/v3.5.4)
+[![JitPack](https://img.shields.io/github/tag/rithms/riot-api-java.svg?label=maven)](https://jitpack.io/#rithms/riot-api-java/v3.8.2)
 ----------
 
 A simple to use, Riot Games API wrapper for Java.
@@ -11,11 +11,13 @@ This product is not endorsed, certified or otherwise approved in any way by Riot
 
 ## Requirements
 
-**riot-api-java** requires the following libraries:
+**riot-api-java** requires Java 7 and the following libraries:
 - [Google Gson](https://code.google.com/p/google-gson/)
 
 ## Download
-[Download (Version 3.5.4)](https://www.dropbox.com/s/te7kxqqrhzsp60e/riot-api-java.jar?dl=0) 
+[Download (Version 3.8.2)](https://www.dropbox.com/s/te7kxqqrhzsp60e/riot-api-java.jar?dl=0)
+
+[Download for Android (Version 3.8.2)](https://github.com/rithms/riot-api-java/releases/tag/v3.8.2-android) 
 
 ## Setup
 
@@ -28,7 +30,7 @@ Build Path -> Configure Build Path -> Libraries -> Add External Jars
 and selecting the jar under the Order and Export tab.
 
 
-This project is also available on [Jitpack](https://jitpack.io/#rithms/riot-api-java/v3.5.4)
+This project is also available on [Jitpack](https://jitpack.io/#rithms/riot-api-java/v3.8.2)
 
 ## Usage
 
@@ -36,14 +38,15 @@ This library can be used strictly according to the [Riot API Documentation](http
 
 ```java
 import java.util.Map;
-import constant.Region;
-import dto.Summoner.Summoner;
-import main.java.riotapi.RiotApi;
+import net.rithms.riot.constant.Region;
+import net.rithms.riot.dto.Summoner.Summoner;
+import net.rithms.riot.api.RiotApi;
+import net.rithms.riot.api.RiotApiException;
 import com.google.gson*;
 
 public class Example {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws RiotApiException {
 		
 		RiotApi api = new RiotApi("YOUR-API-KEY-HERE");
 
@@ -64,14 +67,15 @@ Below is an example of how to set your region. Because the region was set before
 
 ```java
 import java.util.Map;
-import constant.Region;
-import dto.Summoner.Summoner;
-import main.java.riotapi.RiotApi;
+import net.rithms.riot.constant.Region;
+import net.rithms.riot.dto.Summoner.Summoner;
+import net.rithms.riot.api.RiotApi;
+import net.rithms.riot.api.RiotApiException;
 import com.google.gson*;
 
 public class Example {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws RiotApiException {
 		
 		RiotApi api = new RiotApi("YOUR-API-KEY-HERE");
 		
@@ -92,20 +96,21 @@ It is important to be aware of your personal rate limit. Any method call from th
 
 
 ```java
-import constant.Region;
-import constant.Season;
-import dto.Stats.RankedStats;
-import main.java.riotapi.RiotApi;
+import net.rithms.riot.constant.Region;
+import net.rithms.riot.constant.Season;
+import net.rithms.riot.dto.Stats.RankedStats;
+import net.rithms.riot.api.RiotApi;
+import net.rithms.riot.api.RiotApiException;
 import com.google.gson*;
 
 public class Example {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws RiotApiException {
 		
 		RiotApi api = new RiotApi("YOUR-API-KEY-HERE", Region.NA);
 		api.setSeason(Season.FIVE);
 		
-		RankedStats rankedStats = api.getRankedStats(api.getSummonersByName("rithms, tryndamere").get("rithms").getId());
+		RankedStats rankedStats = api.getRankedStats(api.getSummonerByName("rithms").getId());
 	}
 
 }
@@ -113,7 +118,7 @@ public class Example {
 ```
 
 ## Documentation
-The documentation for this library can be found [here.](http://rithms.im/riot-api-java/doc/)
+The documentation for this library can be found [here.](http://rithms.net/riot-api-java/doc/)
 
 ## API Versions
 The current version of this library supports the following Riot Games API versions:
@@ -122,18 +127,18 @@ The current version of this library supports the following Riot Games API versio
 - **featured-games-v1.0 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, PBE, RU, TR]**
 - **game-v1.3 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, RU, TR]**
 - **league-v2.5 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, RU, TR]**
-- **lol-static-data-v1.2 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, RU, TR]**
+- **lol-static-data-v1.2 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, PBE, RU, TR]**
 - **lol-status-v1.0 [BR, EUNE, EUW, LAN, LAS, NA, OCE, PBE, RU, TR]**
-- **match-v2.2 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, PBE, RU, TR]**
-- **matchhistory-v2.2 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, PBE, RU, TR]**
+- **match-v2.2 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, RU, TR]**
+- **matchlist-v2.2 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, RU, TR]**
 - **stats-v1.3 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, RU, TR]**
 - **summoner-v1.4 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, RU, TR]**
 - **team-v2.4 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, RU, TR]**
+- **tournament-provider-v1 [ALL]**
 
 ## Contributing
 All contributions are appreciated.
 If you would like to contribute to this repo, please send a pull request.
 
-## Discussion
-The discussion thread for this library can be found [here](https://developer.riotgames.com/discussion/riot-games-api/show/VmGxpdN8).
-Have a suggestion, complaint, or question? [Tweet me](http://twitter.com/itsRithms) for a quick reply, or send me an email (tcaldwel@nmsu.edu).
+## Contact
+Have a suggestion, complaint, or question? Open an [issue](https://github.com/rithms/riot-api-java/issues), or [tweet me](http://twitter.com/itsRithms) for a quick reply.
