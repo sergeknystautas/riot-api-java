@@ -1,10 +1,10 @@
 #[RIOT-API-JAVA](http://rithms.net/riot-api-java/)
 ----------
-[![JitPack](https://img.shields.io/github/tag/rithms/riot-api-java.svg?label=maven)](https://jitpack.io/#rithms/riot-api-java/v3.8.2)
+[![JitPack](https://img.shields.io/github/tag/rithms/riot-api-java.svg?label=maven)](https://jitpack.io/#rithms/riot-api-java/v3.9.0)
 ----------
 
 A simple to use, Riot Games API wrapper for Java.
-This library makes it easy to gather and use League of Legends data in your web and mobile (Android) apps.
+This library makes it easy to gather and use League of Legends data in your apps.
 
 ## Disclaimer
 This product is not endorsed, certified or otherwise approved in any way by Riot Games, Inc. or any of its affiliates.
@@ -14,14 +14,9 @@ This product is not endorsed, certified or otherwise approved in any way by Riot
 **riot-api-java** requires Java 7 and the following libraries:
 - [Google Gson](https://code.google.com/p/google-gson/)
 
-## Download
-[Download (Version 3.8.2)](https://www.dropbox.com/s/te7kxqqrhzsp60e/riot-api-java.jar?dl=0)
-
-[Download for Android (Version 3.8.2)](https://github.com/rithms/riot-api-java/releases/tag/v3.8.2-android) 
-
 ## Setup
 
-[Download](https://www.dropbox.com/s/te7kxqqrhzsp60e/riot-api-java.jar?dl=0) the .jar file, and add it as an external library to your project.
+[Download](https://github.com/rithms/riot-api-java/releases) the .jar file, and add it as an external library to your project.
 
 If you are using Eclipse, this can be done by right clicking your project, and selecting:
 
@@ -30,7 +25,7 @@ Build Path -> Configure Build Path -> Libraries -> Add External Jars
 and selecting the jar under the Order and Export tab.
 
 
-This project is also available on [Jitpack](https://jitpack.io/#rithms/riot-api-java/v3.8.2)
+This project is also available on [Jitpack](https://jitpack.io/#rithms/riot-api-java/v3.9.0)
 
 ## Usage
 
@@ -123,6 +118,7 @@ The documentation for this library can be found [here.](http://rithms.net/riot-a
 ## API Versions
 The current version of this library supports the following Riot Games API versions:
 - **champion-v1.2 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, RU, TR]**
+- **championmastery [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, RU, TR]**
 - **current-game-v1.0 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, PBE, RU, TR]**
 - **featured-games-v1.0 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, PBE, RU, TR]**
 - **game-v1.3 [BR, EUNE, EUW, KR, LAN, LAS, NA, OCE, RU, TR]**
@@ -138,7 +134,7 @@ The current version of this library supports the following Riot Games API versio
 
 ## Contributing
 All contributions are appreciated.
-If you would like to contribute to this repo, please send a pull request.
+If you would like to contribute to this project, please send a pull request.
 
 ## Contact
-Have a suggestion, complaint, or question? Open an [issue](https://github.com/rithms/riot-api-java/issues), or [tweet me](http://twitter.com/itsRithms) for a quick reply.
+Have a suggestion, complaint, or question? Open an [issue](https://github.com/rithms/riot-api-java/issues).

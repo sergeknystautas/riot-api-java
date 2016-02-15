@@ -9,7 +9,7 @@
 <project default="package" basedir=".">
     <target name="init">
         <!-- properties for main build -->
-        <property name="src.dir" value="${basedir}/src"/>
+        <property name="src.dir" value="${basedir}/src/main/java"/>
         <property name="docs.dir" value="${basedir}/docs"/>
         <property name="build.dir" value="${basedir}/build"/>
         <property name="build.src" value="${build.dir}/src"/>
@@ -108,7 +108,7 @@
         <mkdir dir="${build.javadocs}"/>
         <javadoc sourcepath="${build.src}"
             destdir="${build.javadocs}"
-            packagenames="net.rithms.riot.api,net.rithms.riot.constant,net.rithms.riot.constant.staticdata,net.rithms.riot.dto.Champion,net.rithms.riot.dto.CurrentGame,net.rithms.riot.dto.FeaturedGames,net.rithms.riot.dto.Game,net.rithms.riot.dto.League,net.rithms.riot.dto.Match,net.rithms.riot.dto.MatchList,net.rithms.riot.dto.Static,net.rithms.riot.dto.Stats,net.rithms.riot.dto.Status,net.rithms.riot.dto.Summoner,net.rithms.riot.dto.Team,net.rithms.riot.dto.Tournament,method,net.rithms.util">
+            packagenames="net.rithms.riot.api,net.rithms.riot.constant,net.rithms.riot.api.endpoints.champion.dto,net.rithms.riot.api.endpoints.championmastery.dto,net.rithms.riot.api.endpoints.current_game.dto,net.rithms.riot.api.endpoints.featured_game.dto,net.rithms.riot.api.endpoints.game.dto,net.rithms.riot.api.endpoints.league.dto,net.rithms.riot.api.endpoints.match.dto,net.rithms.riot.api.endpoints.matchlist.dto,net.rithms.riot.api.endpoints.static_data.dto,net.rithms.riot.api.endpoints.stats.dto,net.rithms.riot.api.endpoints.status.dto,net.rithms.riot.api.endpoints.summoner.dto,net.rithms.riot.api.endpoints.team.dto,net.rithms.riot.api.endpoints.tournament.dto,method,net.rithms.riot.api.request,net.rithms.riot.api.request.ratelimit,method,net.rithms.util">
             <classpath>
                 <fileset dir="lib">
                     <include name="**/*.jar"/>
