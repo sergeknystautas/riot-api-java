@@ -108,7 +108,7 @@
         <mkdir dir="${build.javadocs}"/>
         <javadoc sourcepath="${build.src}"
             destdir="${build.javadocs}"
-            packagenames="constant,constant.staticdata,dto.Champion,dto.Game,dto.League,dto.Match,dto.MatchHistory,dto.Static,dto.Stats,dto.Status,dto.Summoner,dto.Team,main.java.riotapi,method,util">
+            packagenames="net.rithms.riot.api,net.rithms.riot.constant,net.rithms.riot.constant.staticdata,net.rithms.riot.dto.Champion,net.rithms.riot.dto.CurrentGame,net.rithms.riot.dto.FeaturedGames,net.rithms.riot.dto.Game,net.rithms.riot.dto.League,net.rithms.riot.dto.Match,net.rithms.riot.dto.MatchList,net.rithms.riot.dto.Static,net.rithms.riot.dto.Stats,net.rithms.riot.dto.Status,net.rithms.riot.dto.Summoner,net.rithms.riot.dto.Team,net.rithms.riot.dto.Tournament,method,net.rithms.util">
             <classpath>
                 <fileset dir="lib">
                     <include name="**/*.jar"/>
