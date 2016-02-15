@@ -151,6 +151,8 @@ public class Request {
 				} else {
 					throw new RateLimitException(0, rateLimitType);
 				}
+			} else if (responseCode == CODE_ERROR_NOT_FOUND && !config.getFailNotFound()) {
+			    // We will gracefully skip this
 			} else if (responseCode < 200 || responseCode >= 300) {
 				throw new RiotApiException(responseCode);
 			}
@@ -230,7 +232,7 @@ public class Request {
 		if (!overrideStateRequirement) {
 			requireSucceededRequestState();
 		}
-		if (response.getCode() == CODE_SUCCESS_NO_CONTENT) {
+		if (response.getCode() == CODE_SUCCESS_NO_CONTENT || response.getCode() == CODE_ERROR_NOT_FOUND) {
 			// The Riot Api is fine with the request, and explicitly sends no content
 			return null;
 		}

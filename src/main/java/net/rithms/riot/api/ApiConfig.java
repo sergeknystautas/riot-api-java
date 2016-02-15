@@ -32,12 +32,13 @@ public class ApiConfig {
 	private int requestTimeout = 0;
 	private boolean respectRateLimit = true;
 	private String tournamentKey = null;
+	private boolean failNotFound = true;
 
 	@Override
 	public ApiConfig clone() {
 		return new ApiConfig().setAsyncRequestTimeout(getAsyncRequestTimeout()).setDebugLevel(getDebugLevel()).setDebugToFile(getDebugToFile()).setKey(getKey())
 				.setMaxAsyncThreads(getMaxAsyncThreads()).setRequestTimeout(getRequestTimeout()).setRespectRateLimit(getRespectRateLimit())
-				.setTournamentKey(getTournamentKey());
+				.setTournamentKey(getTournamentKey()).setFailNotFound(getFailNotFound());
 	}
 
 	public int getAsyncRequestTimeout() {
@@ -72,6 +73,9 @@ public class ApiConfig {
 		return tournamentKey;
 	}
 
+	public boolean getFailNotFound() {
+	    return failNotFound;
+	}
 	/**
 	 * Sets how many milliseconds a call in {@link RiotApiAsync} waits for a response at most before timing out. This value can be set to
 	 * zero to disable the request timeout. By default, the timeout value for asynchronous requests is 10 seconds.
@@ -205,5 +209,17 @@ public class ApiConfig {
 		Objects.requireNonNull(tournamentKey, "tournamentKey must not be null");
 		this.tournamentKey = tournamentKey;
 		return this;
+	}
+	
+    /**
+     * Sets whether the api should throw an error if the data is not found. If set to {@code true}, the api will return null instead of throwing an error message.
+     *
+     * @param failNotFound
+     *            {@code true} if the api should throw an error for missing data 
+     * @return This ApiConfig object for chaining
+     */
+	public ApiConfig setFailNotFound(boolean failNotFound) {
+	    this.failNotFound = failNotFound;
+	    return this;
 	}
 }
